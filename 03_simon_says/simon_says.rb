@@ -22,5 +22,18 @@ def first_word string
 end
 
 def titleize string
-    return_string = string.split(" ").map{|word| word.capitalize}.join(" ")
+    word_array = string.split(" ")
+    # words that aren't going to be titleized
+    small_words = ["and", "over", "the"]
+    # does not titleize first word if it's a small word! 
+    capitalized = word_array.map{|word| 
+        if small_words.include?(word) 
+            word
+        else 
+            word.capitalize
+        end 
+    }
+    # this fixes titleization for small words at start of string
+    capitalized[0].capitalize!
+    capitalized.join("  ")
 end
